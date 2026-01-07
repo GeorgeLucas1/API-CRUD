@@ -1,18 +1,36 @@
+# Arquitetura de API em Node.js (Node puro)
 
-#estudando desenvolvimento de API EM NODE PURO
+## Fluxo de uma requisição HTTP
 
-📱 CLIENTE
-    ↓ faz requisição
-📋 ROUTER (Cardápio) → "Qual rota você quer?"
-    ↓
-🚪 MIDDLEWARE (Porteiro) → "Seus dados são válidos?"
-    ↓
-🙋 CONTROLLER (Garçom) → "Recebi seu pedido!"
-    ↓
-👨‍🍳 SERVICE (Chef) → "Vou aplicar as regras de negócio"
-    ↓
-🧑‍🍳 REPOSITORY (Ajudante) → "Vou buscar/salvar no banco"
-    ↓
-🏪 DATABASE (Estoque) → "Aqui estão os dados"
-    ↓
-↩️ Resposta volta pelo mesmo caminho até o CLIENTE
+CLIENTE  
+↓ faz requisição  
+ROUTER (definição de rotas) — seleciona o endpoint  
+↓  
+MIDDLEWARE (validação e controle) — valida dados, autenticação, autorização  
+↓  
+CONTROLLER (orquestração) — recebe a requisição e coordena o fluxo  
+↓  
+SERVICE (regras de negócio) — aplica regras e casos de uso  
+↓  
+REPOSITORY (acesso a dados) — consulta e persiste informações  
+↓  
+DATABASE (persistência) — armazena e retorna dados  
+↓  
+Resposta retorna pelo mesmo caminho até o CLIENTE
+
+## Responsabilidades
+
+- **Router**: mapeia métodos HTTP e URLs para controllers.
+- **Middleware**: validações genéricas, autenticação, autorização, logs.
+- **Controller**: entrada e saída da API (req/res).
+- **Service**: regras de negócio e casos de uso.
+- **Repository**: abstração de acesso ao banco.
+- **Database**: persistência de dados.
+
+## Observação
+
+Esse padrão é compatível com princípios de separação de responsabilidades e Clean Architecture.
+
+
+
+
